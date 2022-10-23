@@ -12,7 +12,7 @@
 
       <v-col class="mb-4">
         <h1 class="display-2 font-weight-bold mb-3">
-          Welcome to Vuetify 3 Beta
+          Welcome to Vuetify 3 Beta {{ user }}
         </h1>
 
 
@@ -88,17 +88,40 @@
           </a>
         </v-row>
       </v-col>
+      <v-col
+        class="mb-5"
+        cols="12"
+      >
+        <h2 class="headline font-weight-bold mb-5">
+          Add link
+        </h2>
+
+        <v-row justify="center">
+          <router-link to="contact">Contact</router-link>
+        </v-row>
+      </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script lang='ts'>
-import { defineComponent } from 'vue'
+import { propsToAttrMap } from '@vue/shared';
+import { defineComponent, PropType } from 'vue'
 
+interface User {
+  id: number;
+  name: string;
+  age: number;
+}
 
 export default defineComponent({
   name: 'HelloWorld',
-
+  props: {
+    user: {
+      type: Object as PropType<User>,
+      required: true,
+    }
+  },
   data () {
     return {
       ecosystem: [
