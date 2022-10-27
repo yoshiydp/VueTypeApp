@@ -100,13 +100,33 @@
           <router-link to="contact">Contact</router-link>
         </v-row>
       </v-col>
+
+      <v-col
+        class="mb-5"
+        cols="12"
+      >
+        <h2 class="headline font-weight-bold mb-5">
+          Users
+        </h2>
+
+        <v-row justify="center">
+          <ul v-for="(user, index) in userList" :key="index">
+            <li>
+              <p>{{ user.id }}</p>
+              <p>{{ user.name }}</p>
+              <p>{{ user.email }}</p>
+              <p>{{ user.created_at }}</p>
+              <p>{{ user.updated_at }}</p>
+            </li>
+          </ul>
+        </v-row>
+      </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script lang='ts'>
-import { propsToAttrMap } from '@vue/shared';
-import { defineComponent, PropType } from 'vue'
+import { defineComponent, PropType } from 'vue';
 import UserApiService from '../services/UserApiService';
 
 interface User {
@@ -123,7 +143,12 @@ export default defineComponent({
       required: true,
     }
   },
-  data () {
+  data(): {
+    ecosystem: any | string[],
+    importantLinks: any | string[],
+    whatsNext: any | string[],
+    userList: any | string[],
+  } {
     return {
       ecosystem: [
         {
@@ -171,10 +196,12 @@ export default defineComponent({
           href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions',
         },
       ],
+      userList: []
     }
   },
-  mounted() {
-    console.log(UserApiService.getAll());
+  created() {
+    UserApiService.getAll()
+      .then(response => (this.userList = response.data));
     // console.log(UserApiService.get(0));
     // console.log(UserApiService.deleteAll());
   }
