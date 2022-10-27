@@ -107,6 +107,7 @@
 <script lang='ts'>
 import { propsToAttrMap } from '@vue/shared';
 import { defineComponent, PropType } from 'vue'
+import UserApiService from '../services/UserApiService';
 
 interface User {
   id: number;
@@ -172,5 +173,10 @@ export default defineComponent({
       ],
     }
   },
+  mounted() {
+    console.log(UserApiService.getAll());
+    // console.log(UserApiService.get(0));
+    // console.log(UserApiService.deleteAll());
+  }
 })
 </script>
