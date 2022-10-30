@@ -144,10 +144,10 @@ export default defineComponent({
     }
   },
   data(): {
-    ecosystem: any | string[],
-    importantLinks: any | string[],
-    whatsNext: any | string[],
-    userList: any | string[],
+    ecosystem: string | any[],
+    importantLinks: string | any[],
+    whatsNext: string | any[],
+    userList: string | any[],
   } {
     return {
       ecosystem: [
@@ -196,7 +196,7 @@ export default defineComponent({
           href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions',
         },
       ],
-      userList: []
+      userList: [],
     }
   },
   created() {
