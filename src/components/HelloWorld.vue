@@ -97,7 +97,16 @@
         </h2>
 
         <v-row justify="center">
-          <router-link to="contact">Contact</router-link>
+          <router-link
+            to="about"
+            class="mx-3">
+            About
+          </router-link>
+          <router-link
+            to="contact"
+            class="mx-3">
+            Contact
+          </router-link>
         </v-row>
       </v-col>
 
